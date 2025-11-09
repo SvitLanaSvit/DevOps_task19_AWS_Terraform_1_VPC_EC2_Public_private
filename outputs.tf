@@ -65,8 +65,28 @@ output "public_route_table_id" {
   value       = aws_route_table.public.id
 }
 
+output "private_route_table_id" {
+  description = "ID Route Table для приватної підмережі"
+  value       = aws_route_table.private.id
+}
+
+# NAT Gateway Outputs
+output "nat_gateway_id" {
+  description = "ID NAT Gateway"
+  value       = aws_nat_gateway.main.id
+}
+
+output "nat_eip_public_ip" {
+  description = "Публічний IP адрес NAT Gateway"
+  value       = aws_eip.nat.public_ip
+}
+
+output "nat_eip_id" {
+  description = "ID Elastic IP для NAT Gateway"
+  value       = aws_eip.nat.id
+}
+
 # TODO: Будуть додані outputs для:
-# - NAT Gateway
 # - Security Groups  
 # - EC2 instance IPs
 # - SSH команди для підключення
