@@ -92,7 +92,7 @@
 
 ## 💻 Код конфігурації
 
-### 1. Elastic IP для NAT Gateway (в main.tf):
+### 1. Elastic IP для NAT Gateway (в nat_gateway.tf):
 ```hcl
 # Elastic IP для NAT Gateway
 resource "aws_eip" "nat" {

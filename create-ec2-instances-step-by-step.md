@@ -145,7 +145,7 @@ aws ec2 describe-images \
   --output text
 ```
 
-### 3. Додавання EC2 ресурсів до main.tf
+### 3. Додавання EC2 ресурсів до ec2.tf
 - Data source для Ubuntu AMI
 - Key Pair ресурс
 - Public EC2 instance

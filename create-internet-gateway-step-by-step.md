@@ -75,7 +75,7 @@
 
 ## 💻 Код конфігурації
 
-### 1. Internet Gateway (в main.tf):
+### 1. Internet Gateway (в internet_gateway.tf):
 ```hcl
 # Internet Gateway для публічного доступу
 resource "aws_internet_gateway" "main" {

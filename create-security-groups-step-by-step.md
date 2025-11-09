@@ -132,7 +132,7 @@ egress {
 
 ## 💻 Код конфігурації
 
-### 1. Public Security Group (в main.tf):
+### 1. Public Security Group (в security_groups.tf):
 ```hcl
 # Security Group для публічного EC2 (Jump Host / Bastion)
 resource "aws_security_group" "public_ec2" {
