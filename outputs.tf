@@ -53,6 +53,20 @@ output "private_subnet_cidr" {
   value       = aws_subnet.private.cidr_block
 }
 
+# Internet Gateway Outputs
+output "internet_gateway_id" {
+  description = "ID Internet Gateway"
+  value       = aws_internet_gateway.main.id
+}
+
+# Route Table Outputs
+output "public_route_table_id" {
+  description = "ID Route Table для публічної підмережі"
+  value       = aws_route_table.public.id
+}
+
 # TODO: Будуть додані outputs для:
+# - NAT Gateway
+# - Security Groups  
 # - EC2 instance IPs
 # - SSH команди для підключення
