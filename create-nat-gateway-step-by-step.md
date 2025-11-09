@@ -200,7 +200,7 @@ nat_eip_id = "eipalloc-05b88184eacbdfe39"
 private_route_table_id = "rtb-0cfcff0f7bf24a880"
 ```
 
-**Скриншот**: [Screens/9.1_tf_output.png]
+![Terraform Output NAT Gateway](Screens/9.1_tf_output.png)
 
 ---
 
@@ -213,7 +213,7 @@ private_route_table_id = "rtb-0cfcff0f7bf24a880"
 - **Elastic IP**: `3.124.200.138`
 - **Subnet**: `subnet-0a01aeb1c1c5df18b` (Public)
 
-**Скриншот**: [Screens/9.2_aws_nat_getway.png]
+![NAT Gateway в AWS Console](Screens/9.2_aws_nat_getway.png)
 
 ### 2. Перевірка Elastic IP:
 - **Перехід**: EC2 → Elastic IPs
@@ -221,8 +221,8 @@ private_route_table_id = "rtb-0cfcff0f7bf24a880"
 - **Public IP**: `3.124.200.138`
 - **Associated**: NAT Gateway `nat-0f9609d5059dbc665`
 
-**Скриншот**: [Screens/9.3_aws_nat_getway.png]
-**Скриншот**: [Screens/9.4_aws_nat_getway.png]
+![NAT Gateway Elastic IP](Screens/9.3_aws_nat_getway.png)
+![NAT Gateway Details](Screens/9.4_aws_nat_getway.png)
 
 ### 3. Перевірка Private Route Table:
 - **Перехід**: VPC → Route Tables
@@ -231,14 +231,14 @@ private_route_table_id = "rtb-0cfcff0f7bf24a880"
   - `10.0.0.0/16` → local
   - `0.0.0.0/0` → `nat-0f9609d5059dbc665`
 
-**Скриншот**: [Screens/9.5_aws_route_table_private.png]
-**Скриншот**: [Screens/9.6_aws_route_table_private.png]
+![Private Route Table](Screens/9.5_aws_route_table_private.png)
+![Private Route Table Details](Screens/9.6_aws_route_table_private.png)
 
 ### 4. Перевірка Subnet Associations:
 - **Route Table**: `rtb-0cfcff0f7bf24a880`
 - **Associated Subnets**: `subnet-058f889377a78fa60` (Private)
 
-**Скриншот**: [Screens/9.7_aws_subnet_associations_route_table_private.png]
+![Private Subnet Associations](Screens/9.7_aws_subnet_associations_route_table_private.png)
 
 ---
 
