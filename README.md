@@ -162,7 +162,8 @@
 
 AWS CLI потрібен для взаємодії з AWS з командного рядка. Terraform використовує ті ж самі credentials.
 
-**📋 Детальні інструкції**: [install-aws-cli.md](install-aws-cli.md)
+**📋 Детальні інструкції**: [install-aws-cli.md](docs/install-aws-cli.md)  
+**📋 Налаштування credentials**: [aws-credentials-setup.md](docs/aws-credentials-setup.md)
 
 **Швидке встановлення для Windows:**
 1. Завантажте MSI installer: https://awscli.amazonaws.com/AWSCLIV2.msi
@@ -179,18 +180,18 @@ AWS CLI потрібен для взаємодії з AWS з командног�
 
 ### 1.3 Створення спеціального Terraform користувача
 
-**📋 Детальні інструкції**: [create-terraform-user.md](create-terraform-user.md)
+**📋 Детальні інструкції**: [create-terraform-user.md](docs/create-terraform-user.md)
 
 **Що було зроблено:**
 1. ✅ Створено нового IAM користувача: `sk-terraform-user`
-2. ✅ Додано політики: S3FullAccess + EC2FullAccess
+2. ✅ Додано політики: S3FullAccess + EC2FullAccess ([детальніше про EC2 політики](docs/add-ec2-permissions.md))
 3. ✅ Створено Access Keys для програмного доступу
 4. ✅ Налаштовано AWS CLI профіль: `aws configure --profile sk-terraform-user`
 5. ✅ Створено S3 bucket: `terraform-state-svitlana-vpc`
 
 ### 1.4 Налаштування AWS Profile для Terraform
 
-**⚠️ КРИТИЧНО ВАЖЛИВО**: [aws-profile-setup.md](aws-profile-setup.md)
+**⚠️ КРИТИЧНО ВАЖЛИВО**: [aws-profile-setup.md](docs/aws-profile-setup.md)
 
 **Проблема**: Terraform backend за замовчуванням використовує default профіль, а не `sk-terraform-user`.
 
@@ -208,7 +209,7 @@ export AWS_PROFILE=sk-terraform-user
 
 **Мета**: Встановити Terraform для керування інфраструктурою як код (IaC)
 
-**📋 Детальні інструкції**: [install-terraform.md](install-terraform.md)
+**📋 Детальні інструкції**: [install-terraform.md](docs/install-terraform.md)
 
 **Швидке встановлення:**
 1. Завантажити з https://www.terraform.io/downloads.html
@@ -228,7 +229,7 @@ export AWS_PROFILE=sk-terraform-user
 
 **1. Terraform проект:**
 - ✅ Основні .tf файли (main, variables, outputs)
-- ✅ S3 backend для збереження стану
+- ✅ S3 backend для збереження стану ([детальніше про S3 backend](docs/s3-backend-guide.md))
 - ✅ AWS provider налаштований
 - ✅ Документація: стандартна структура Terraform проекту
 
@@ -237,7 +238,7 @@ export AWS_PROFILE=sk-terraform-user
 - ✅ Public Subnet: `subnet-0a01aeb1c1c5df18b` (10.0.1.0/24, eu-central-1a)
 - ✅ Private Subnet: `subnet-058f889377a78fa60` (10.0.2.0/24, eu-central-1b)
 - ✅ DNS підтримка увімкнена
-- ✅ Документація: [create-vpc-step-by-step.md](create-vpc-step-by-step.md), [create-subnets-step-by-step.md](create-subnets-step-by-step.md)
+- ✅ Документація: [create-vpc-step-by-step.md](docs/create-vpc-step-by-step.md), [create-subnets-step-by-step.md](docs/create-subnets-step-by-step.md)
 
 ### 📋 Поточна структура проекту:
 
@@ -252,12 +253,13 @@ export AWS_PROFILE=sk-terraform-user
 ├── variables.tf                   # ✅ Змінні (регіон, CIDR блоки)
 ├── outputs.tf                     # ✅ Outputs (VPC, Subnet IDs)
 ├── .terraform.lock.hcl           # ✅ Terraform dependency lock
-├── aws-profile-setup.md          # ⚠️ КРИТИЧНО: налаштування AWS_PROFILE
-├── create-terraform-user.md      # 📋 Створення IAM користувача
-├── create-vpc-step-by-step.md    # 📋 Інструкція VPC
-├── create-subnets-step-by-step.md # 📋 Інструкція Subnets
-├── install-aws-cli.md            # 📋 Встановлення AWS CLI
-├── install-terraform.md          # 📋 Встановлення Terraform
+├── docs/                          # 📁 Документація
+│   ├── aws-profile-setup.md      # ⚠️ КРИТИЧНО: налаштування AWS_PROFILE
+│   ├── create-terraform-user.md  # 📋 Створення IAM користувача
+│   ├── create-vpc-step-by-step.md # 📋 Інструкція VPC
+│   ├── create-subnets-step-by-step.md # 📋 Інструкція Subnets
+│   ├── install-aws-cli.md        # 📋 Встановлення AWS CLI
+│   └── install-terraform.md      # 📋 Встановлення Terraform
 └── Screens/                      # 📸 Скріншоти з AWS Console
     ├── 6.1_aws_vpc.png          # VPC створений
     ├── 7.1_subnets_list.png     # Список підмереж
@@ -289,7 +291,7 @@ export AWS_PROFILE=sk-terraform-user
 
 **Результат**: ✅ Публічна підмережа тепер має повний доступ до інтернету!
 
-**📋 Детальні інструкції**: [create-internet-gateway-step-by-step.md](create-internet-gateway-step-by-step.md)
+**📋 Детальні інструкції**: [create-internet-gateway-step-by-step.md](docs/create-internet-gateway-step-by-step.md)
 
 ---
 
@@ -308,7 +310,7 @@ export AWS_PROFILE=sk-terraform-user
 
 **Результат**: ✅ Приватна підмережа тепер має вихідний доступ до інтернету!
 
-**📋 Детальні інструкції**: [create-nat-gateway-step-by-step.md](create-nat-gateway-step-by-step.md)
+**📋 Детальні інструкції**: [create-nat-gateway-step-by-step.md](docs/create-nat-gateway-step-by-step.md)
 
 ---
 
@@ -329,7 +331,7 @@ export AWS_PROFILE=sk-terraform-user
 
 **Результат**: ✅ Мінімалістичні та безпечні правила відповідно до завдання!
 
-**📋 Детальні інструкції**: [create-security-groups-step-by-step.md](create-security-groups-step-by-step.md)
+**📋 Детальні інструкції**: [create-security-groups-step-by-step.md](docs/create-security-groups-step-by-step.md)
 
 ---
 
@@ -366,7 +368,7 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 
 **Результат**: ✅ Два Ubuntu сервери готові для тестування архітектури!
 
-**📋 Детальні інструкції**: [create-ec2-instances-step-by-step.md](create-ec2-instances-step-by-step.md)
+**📋 Детальні інструкції**: [create-ec2-instances-step-by-step.md](docs/create-ec2-instances-step-by-step.md)
 
 ---
 
@@ -404,7 +406,7 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 
 **Фінальний результат**: 🎉 **Повна VPC архітектура працює ідеально!**
 
-**📋 Детальні інструкції**: [test-connectivity-step-by-step.md](test-connectivity-step-by-step.md)
+**📋 Детальні інструкції**: [test-connectivity-step-by-step.md](docs/test-connectivity-step-by-step.md)
 
 ---
 
@@ -471,6 +473,8 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 
 **Мета**: Видалити всі створені ресурси щоб уникнути витрат
 
+**📋 Детальні інструкції**: [cleanup-remaining-resources.md](docs/cleanup-remaining-resources.md)
+
 ### ✅ **Що виконано:**
 1. ✅ **terraform destroy -auto-approve** - успішно видалено всі 15 ресурсів
 2. ✅ **Підтвердження видалення**: Plan показав 15 ресурсів для видалення
@@ -520,12 +524,22 @@ aws configure list-profiles
 ```
 19/
 ├── README.md                    # Цей файл - головна документація
-├── aws-profile-setup.md         # ⚠️ КРИТИЧНО: Налаштування AWS профілю
-├── aws-credentials-setup.md     # Інструкції по налаштуванню AWS
-├── install-aws-cli.md          # Інструкції по встановленню AWS CLI
-├── create-terraform-user.md    # Створення IAM користувача
-├── add-ec2-permissions.md      # Додавання EC2 політики
 ├── task.txt                    # Оригінальне завдання
+├── docs/                       # 📁 Документація проекту
+│   ├── aws-profile-setup.md    # ⚠️ КРИТИЧНО: Налаштування AWS профілю
+│   ├── aws-credentials-setup.md # Інструкції по налаштуванню AWS
+│   ├── install-aws-cli.md      # Інструкції по встановленню AWS CLI
+│   ├── create-terraform-user.md # Створення IAM користувача
+│   ├── add-ec2-permissions.md  # Додавання EC2 політики
+│   ├── s3-backend-guide.md    # Налаштування S3 backend для Terraform
+│   ├── create-vpc-step-by-step.md # Покрокове створення VPC
+│   ├── create-subnets-step-by-step.md # Покрокове створення підмереж
+│   ├── create-internet-gateway-step-by-step.md # Покрокове створення IGW
+│   ├── create-nat-gateway-step-by-step.md # Покрокове створення NAT
+│   ├── create-security-groups-step-by-step.md # Покрокове створення SG
+│   ├── create-ec2-instances-step-by-step.md # Покрокове створення EC2
+│   ├── test-connectivity-step-by-step.md # Покрокове тестування
+│   └── cleanup-remaining-resources.md # Очищення ресурсів
 ├── main.tf                     # ✅ Terraform core, AWS provider, data sources
 ├── vpc.tf                      # ✅ VPC та підмережі
 ├── internet_gateway.tf         # ✅ Internet Gateway та public routing
