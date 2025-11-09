@@ -43,13 +43,47 @@
 
 #### 2.1 Створення IAM Policy
 1. **IAM** → **Policies** → **Create policy**
-2. **JSON** таб → Вставити політику
+2. **JSON** таб → Вставити політику:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowListingBucketsInConsole",
+      "Effect": "Allow",
+      "Action": "s3:ListAllMyBuckets",
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowAccessToThisBucketOnly",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::svitlana-kizilpinar-test-s3-bucket"
+    },
+    {
+      "Sid": "AllowObjectsCRUDInThisBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::svitlana-kizilpinar-test-s3-bucket/*"
+    }
+  ]
+}
+```
 
 ![Крок 2.1: Створення нової політики](Screens/4.1_create_policy.png)
 
 #### 2.2 Налаштування політики
-1. Вставити JSON з правами доступу до S3
-2. **Next**
+1. Назвіть політику: `S3AccessOnlyToSvitlanaKizilpinarBucket`
+2. Додайте опис: `Доступ тільки до S3 bucket для Terraform backend`
+3. **Next**
 
 ![Крок 2.2: JSON політика доступу](Screens/4.2_create_policy.png)
 
