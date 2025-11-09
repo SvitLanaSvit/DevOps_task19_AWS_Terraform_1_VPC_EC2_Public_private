@@ -32,7 +32,27 @@ output "vpc_cidr" {
   value       = aws_vpc.main.cidr_block
 }
 
+# Subnet Outputs
+output "public_subnet_id" {
+  description = "ID публічної підмережі"
+  value       = aws_subnet.public.id
+}
+
+output "private_subnet_id" {
+  description = "ID приватної підмережі"
+  value       = aws_subnet.private.id
+}
+
+output "public_subnet_cidr" {
+  description = "CIDR блок публічної підмережі"
+  value       = aws_subnet.public.cidr_block
+}
+
+output "private_subnet_cidr" {
+  description = "CIDR блок приватної підмережі"
+  value       = aws_subnet.private.cidr_block
+}
+
 # TODO: Будуть додані outputs для:
-# - Subnet IDs  
 # - EC2 instance IPs
 # - SSH команди для підключення
