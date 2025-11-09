@@ -1,0 +1,37 @@
+AWS Terraform VPC вправа
+Створіть власну VPC за допомогою Terraform
+
+Створіть тестовий екземпляр EC2 у цій VPC, який матиме публічний доступ
+
+Створіть тестовий екземпляр EC2 у цій VPC, який матиме лише приватний доступ і буде доступний з першого екземпляра EC2
+
+Видаліть усі створені ресурси
+
+
+
+
+
+
+
+Для читання
+Create a VPC with Terraform - Створення VPC за допомогою Terraform
+Terraform AWS Provider Documentation - Документація Terraform AWS Provider
+
+
+
+
+ENG:
+
+
+
+
+
+AWS Terraform VPC Exercise
+Task
+Create your own VPC using Terraform
+
+Create a test EC2 instance inside this VPC which will have public access
+
+Create a test EC2 instance inside this VPC which will have private access only and will be accessible from the first EC2 instance
+
+Destroy all the resources
