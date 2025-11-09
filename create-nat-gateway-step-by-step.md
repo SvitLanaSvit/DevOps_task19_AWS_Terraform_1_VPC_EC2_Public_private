@@ -238,7 +238,7 @@ private_route_table_id = "rtb-0cfcff0f7bf24a880"
 - **Route Table**: `rtb-0cfcff0f7bf24a880`
 - **Associated Subnets**: `subnet-058f889377a78fa60` (Private)
 
-**Скриншот**: [Screens/5.7-private-subnet-associations.png]
+**Скриншот**: [Screens/9.7_aws_subnet_associations_route_table_private.png]
 
 ---
 

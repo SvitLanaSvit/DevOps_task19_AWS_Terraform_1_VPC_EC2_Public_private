@@ -86,7 +86,17 @@ output "nat_eip_id" {
   value       = aws_eip.nat.id
 }
 
+# Security Groups Outputs
+output "public_security_group_id" {
+  description = "ID Security Group для публічного EC2"
+  value       = aws_security_group.public_ec2.id
+}
+
+output "private_security_group_id" {
+  description = "ID Security Group для приватного EC2"
+  value       = aws_security_group.private_ec2.id
+}
+
 # TODO: Будуть додані outputs для:
-# - Security Groups  
 # - EC2 instance IPs
 # - SSH команди для підключення
