@@ -122,4 +122,4 @@ export AWS_DEFAULT_REGION="eu-central-1"
 
 **📸 СКРІНШОТ**: Приклад правильного виводу після встановлення AWS_PROFILE
 
-![Правильний вивід aws sts get-caller-identity](screenshots/5.2_output_right_with_user_after_export.png)
+![Правильний вивід aws sts get-caller-identity](screens/5.2_output_right_with_user_after_export.png)
