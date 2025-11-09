@@ -29,6 +29,27 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+# Отримання актуального Ubuntu 22.04 LTS AMI
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"] # Canonical
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+}
+
 # ========================================
 # VPC RESOURCES
 # ========================================
@@ -212,5 +233,71 @@ resource "aws_security_group" "private_ec2" {
   tags = {
     Name = "${var.project_name}-private-sg"
     Type = "Private"
+  }
+}
+
+# ========================================
+# EC2 INSTANCES
+# ========================================
+
+# Key Pair для EC2 instances
+resource "aws_key_pair" "main" {
+  key_name   = "${var.project_name}-key"
+  public_key = var.public_key_content
+
+  tags = {
+    Name = "${var.project_name}-key-pair"
+  }
+}
+
+# EC2 Instance у публічній підмережі (Jump Host / Bastion)
+resource "aws_instance" "public" {
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.main.key_name
+  vpc_security_group_ids = [aws_security_group.public_ec2.id]
+  subnet_id              = aws_subnet.public.id
+
+  # User data script для початкової конфігурації
+  user_data_base64 = base64encode(<<-EOF
+              #!/bin/bash
+              apt-get update
+              apt-get install -y htop curl wget
+              echo "Public EC2 (Jump Host) - Ready!" > /home/ubuntu/server-info.txt
+              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
+              EOF
+  )
+
+  tags = {
+    Name        = "${var.project_name}-public-ec2"
+    Type        = "Public"
+    Environment = "Lab"
+    Role        = "Jump-Host"
+  }
+}
+
+# EC2 Instance у приватній підмережі
+resource "aws_instance" "private" {
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.main.key_name
+  vpc_security_group_ids = [aws_security_group.private_ec2.id]
+  subnet_id              = aws_subnet.private.id
+
+  # User data script для початкової конфігурації
+  user_data_base64 = base64encode(<<-EOF
+              #!/bin/bash
+              apt-get update
+              apt-get install -y htop curl wget
+              echo "Private EC2 - Ready!" > /home/ubuntu/server-info.txt
+              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
+              EOF
+  )
+
+  tags = {
+    Name        = "${var.project_name}-private-ec2"
+    Type        = "Private"
+    Environment = "Lab"
+    Role        = "Backend-Server"
   }
 }

@@ -97,6 +97,56 @@ output "private_security_group_id" {
   value       = aws_security_group.private_ec2.id
 }
 
-# TODO: Будуть додані outputs для:
-# - EC2 instance IPs
-# - SSH команди для підключення
+# EC2 Instance Outputs
+output "public_ec2_id" {
+  description = "ID публічного EC2 instance"
+  value       = aws_instance.public.id
+}
+
+output "public_ec2_public_ip" {
+  description = "Публічний IP адрес публічного EC2"
+  value       = aws_instance.public.public_ip
+}
+
+output "public_ec2_private_ip" {
+  description = "Приватний IP адрес публічного EC2"
+  value       = aws_instance.public.private_ip
+}
+
+output "private_ec2_id" {
+  description = "ID приватного EC2 instance"
+  value       = aws_instance.private.id
+}
+
+output "private_ec2_private_ip" {
+  description = "Приватний IP адрес приватного EC2"
+  value       = aws_instance.private.private_ip
+}
+
+# Key Pair Output
+output "key_pair_name" {
+  description = "Назва створеної Key Pair"
+  value       = aws_key_pair.main.key_name
+}
+
+# SSH Commands
+output "ssh_command_public" {
+  description = "Команда для SSH підключення до публічного EC2"
+  value       = "ssh -i ~/.ssh/id_rsa ubuntu@${aws_instance.public.public_ip}"
+}
+
+output "ssh_command_private" {
+  description = "Команда для SSH підключення до приватного EC2 через Jump Host"
+  value       = "ssh -i ~/.ssh/id_rsa -o ProxyCommand=\"ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@${aws_instance.public.public_ip}\" ubuntu@${aws_instance.private.private_ip}"
+}
+
+# AMI Information
+output "ubuntu_ami_id" {
+  description = "ID використаного Ubuntu AMI"
+  value       = data.aws_ami.ubuntu.id
+}
+
+output "ubuntu_ami_name" {
+  description = "Назва використаного Ubuntu AMI"
+  value       = data.aws_ami.ubuntu.name
+}

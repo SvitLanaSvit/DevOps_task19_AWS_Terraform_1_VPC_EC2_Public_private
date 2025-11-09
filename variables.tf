@@ -35,3 +35,9 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+
+variable "public_key_content" {
+  description = "Вміст публічного SSH ключа для доступу до EC2"
+  type        = string
+  sensitive   = true
+}
