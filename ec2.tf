@@ -22,19 +22,12 @@ resource "aws_instance" "public" {
   subnet_id              = aws_subnet.public.id
 
   # User data script для початкової конфігурації
-  user_data_base64 = base64encode(<<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y htop curl wget
-              echo "Public EC2 (Jump Host) - Ready!" > /home/ubuntu/server-info.txt
-              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
-              EOF
-  )
+  user_data_base64 = base64encode(file("${path.module}/templates/public-ec2-userdata.sh"))
 
   tags = {
     Name        = "${var.project_name}-public-ec2"
     Type        = "Public"
-    Environment = "Lab"
+    Environment = var.environment
     Role        = "Jump-Host"
   }
 }
@@ -48,19 +41,12 @@ resource "aws_instance" "private" {
   subnet_id              = aws_subnet.private.id
 
   # User data script для початкової конфігурації
-  user_data_base64 = base64encode(<<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y htop curl wget
-              echo "Private EC2 - Ready!" > /home/ubuntu/server-info.txt
-              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
-              EOF
-  )
+  user_data_base64 = base64encode(file("${path.module}/templates/private-ec2-userdata.sh"))
 
   tags = {
     Name        = "${var.project_name}-private-ec2"
     Type        = "Private"
-    Environment = "Lab"
+    Environment = var.environment
     Role        = "Backend-Server"
   }
 }

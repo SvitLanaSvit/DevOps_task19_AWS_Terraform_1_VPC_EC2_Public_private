@@ -218,12 +218,13 @@ output "private_security_group_id" {
 
 ### 1. Планування змін:
 ```bash
-terraform plan
+export AWS_PROFILE=sk-terraform-user
+terraform plan -var-file="environments/lab.tfvars"
 ```
 
 ### 2. Застосування змін:
 ```bash
-terraform apply -auto-approve
+terraform apply -var-file="environments/lab.tfvars" -auto-approve
 ```
 
 **⚠️ Важливо**: Першу спробу може не вдатися через кирилицю в описах. Потрібно замінити на англійські описи.

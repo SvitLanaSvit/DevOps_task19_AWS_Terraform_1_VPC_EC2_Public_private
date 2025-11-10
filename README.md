@@ -152,6 +152,53 @@
 
 ---
 
+## 🌍 Environment Configuration
+
+Проект використовує `.tfvars` файли для централізованого керування конфігурацією.
+
+### 📁 Структура Environment
+
+```
+environments/
+└── lab.tfvars   # Lab/Learning environment (навчальне середовище)
+```
+
+### 🚀 Використання
+
+```bash
+export AWS_PROFILE=sk-terraform-user
+terraform apply -var-file="environments/lab.tfvars"
+```
+
+### 🎛️ Налаштування lab.tfvars
+
+```hcl
+# AWS Configuration
+aws_region = "eu-central-1"
+
+# Project Configuration
+project_name = "terraform-vpc-exercise"
+environment  = "lab"
+
+# Network Configuration  
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_cidr   = "10.0.1.0/24"
+private_subnet_cidr  = "10.0.2.0/24"
+
+# EC2 Configuration
+instance_type = "t2.micro"
+```
+
+### 🎯 Переваги Environment файлів
+
+- ✅ **Централізація налаштувань** - всі змінні в одному місці
+- ✅ **Легко змінювати** - редагування без пошуку в коді
+- ✅ **Version Control** - історія змін налаштувань
+- ✅ **Готовність до розширення** - легко додати dev/prod в майбутньому
+- ✅ **Best Practice** - стандартний підхід Terraform
+
+---
+
 ## 🔐 Крок 1: Налаштування AWS доступу
 
 **Мета**: Встановити AWS CLI і налаштувати безпечний доступ до AWS для Terraform
@@ -558,12 +605,17 @@ aws configure list-profiles
 ├── .terraform.lock.hcl        # ✅ Terraform dependency lock
 ├── terraform.tfvars          # ✅ Значення змінних (SSH ключ)
 ├── terraform.tfvars.example   # ✅ Приклад значень змінних
+├── environments/              # 🌍 Environment configuration
+│   └── lab.tfvars            # Lab environment variables
+├── templates/                # 📝 User data scripts
+│   ├── public-ec2-userdata.sh  # Public EC2 initialization script
+│   └── private-ec2-userdata.sh # Private EC2 initialization script
 └── .gitignore                 # ✅ Git ignore файл
 ```
 
 ---
 
-## 🎯 Поточний статус
+##  Поточний статус
 
 **🎉 ПРОЕКТ ПОВНІСТЮ ЗАВЕРШЕНИЙ!**
 

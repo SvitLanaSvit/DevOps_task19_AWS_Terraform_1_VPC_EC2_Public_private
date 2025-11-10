@@ -77,8 +77,8 @@
 # Тимчасово закоментуйте секцію backend в main.tf
 
 terraform init
-terraform plan
-terraform apply
+terraform plan -var-file="environments/lab.tfvars"
+terraform apply -var-file="environments/lab.tfvars"
 ```
 
 ### Крок 2: Налаштування Terraform backend

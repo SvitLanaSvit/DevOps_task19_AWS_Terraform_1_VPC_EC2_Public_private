@@ -94,7 +94,7 @@ output "private_subnet_cidr" {
 
 ### 2.1 Перевірка плану
 ```bash
-terraform plan
+terraform plan -var-file="environments/lab.tfvars"
 ```
 
 **Очікуваний вивід:**
@@ -130,7 +130,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
 
 ### 2.2 Застосування змін
 ```bash
-terraform apply -auto-approve
+terraform apply -var-file="environments/lab.tfvars" -auto-approve
 ```
 
 **Очікуваний результат:**

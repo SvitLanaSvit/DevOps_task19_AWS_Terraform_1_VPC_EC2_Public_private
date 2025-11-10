@@ -43,6 +43,27 @@ Internet
 
 ## 📋 Компоненти для створення
 
+### 0. 📁 User Data Scripts (папка templates/)
+Спочатку створюємо папку `templates/` та файли зі скриптами для EC2:
+
+**templates/public-ec2-userdata.sh:**
+```bash
+#!/bin/bash
+apt-get update
+apt-get install -y htop curl wget
+echo "Public EC2 (Jump Host) - Ready!" > /home/ubuntu/server-info.txt
+chown ubuntu:ubuntu /home/ubuntu/server-info.txt
+```
+
+**templates/private-ec2-userdata.sh:**
+```bash
+#!/bin/bash
+apt-get update
+apt-get install -y htop curl wget
+echo "Private EC2 - Ready!" > /home/ubuntu/server-info.txt
+chown ubuntu:ubuntu /home/ubuntu/server-info.txt
+```
+
 ### 1. 🔑 SSH Key Pair
 ```hcl
 resource "aws_key_pair" "main" {
@@ -78,14 +99,8 @@ resource "aws_instance" "public" {
   vpc_security_group_ids = [aws_security_group.public_ec2.id]
   subnet_id              = aws_subnet.public.id
 
-  user_data_base64 = base64encode(<<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y htop curl wget
-              echo "Public EC2 (Jump Host) - Ready!" > /home/ubuntu/server-info.txt
-              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
-              EOF
-  )
+  # User data script для початкової конфігурації
+  user_data_base64 = base64encode(file("${path.module}/templates/public-ec2-userdata.sh"))
 
   tags = {
     Name        = "${var.project_name}-public-ec2"
@@ -105,14 +120,8 @@ resource "aws_instance" "private" {
   vpc_security_group_ids = [aws_security_group.private_ec2.id]
   subnet_id              = aws_subnet.private.id
 
-  user_data_base64 = base64encode(<<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y htop curl wget
-              echo "Private EC2 - Ready!" > /home/ubuntu/server-info.txt
-              chown ubuntu:ubuntu /home/ubuntu/server-info.txt
-              EOF
-  )
+  # User data script для початкової конфігурації
+  user_data_base64 = base64encode(file("${path.module}/templates/private-ec2-userdata.sh"))
 
   tags = {
     Name        = "${var.project_name}-private-ec2"
@@ -181,19 +190,24 @@ variable "public_key_content" {
 
 ## 🚀 Виконання команд
 
-### 1. Валідація конфігурації
+### 1. Встановлення AWS профілю
+```bash
+export AWS_PROFILE=sk-terraform-user
+```
+
+### 2. Валідація конфігурації
 ```bash
 terraform validate
 ```
 
-### 2. Планування змін
+### 3. Планування змін
 ```bash
-terraform plan
+terraform plan -var-file="environments/lab.tfvars"
 ```
 
-### 3. Застосування змін
+### 4. Застосування змін
 ```bash
-terraform apply -auto-approve
+terraform apply -var-file="environments/lab.tfvars" -auto-approve
 ```
 
 ### 4. Встановлення прав для SSH ключа

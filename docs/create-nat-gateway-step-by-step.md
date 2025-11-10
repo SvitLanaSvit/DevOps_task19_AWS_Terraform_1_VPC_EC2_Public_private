@@ -179,12 +179,13 @@ output "private_route_table_id" {
 
 ### 1. Планування змін:
 ```bash
-terraform plan
+export AWS_PROFILE=sk-terraform-user
+terraform plan -var-file="environments/lab.tfvars"
 ```
 
 ### 2. Застосування змін:
 ```bash
-terraform apply -auto-approve
+terraform apply -var-file="environments/lab.tfvars" -auto-approve
 ```
 
 ### 3. Перевірка outputs:
