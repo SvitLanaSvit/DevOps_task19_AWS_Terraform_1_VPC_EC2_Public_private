@@ -468,16 +468,18 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 
 ### ✅ **Рішення - Модульна архітектура**:
 
-Розділили код на **6 спеціалізованих модулів**:
+Розділили код на **8 спеціалізованих модулів**:
 
 | 📁 Файл                | 📏 Розмір   | 🎯 Відповідальність                                |
 |-------------------------|-------------|----------------------------------------------------|
 | **main.tf**             | 2,360 bytes | Core: Terraform config, AWS provider, data sources |
+| **variables.tf**        | 1,245 bytes | Змінні проекту (без default значень)               |
 | **vpc.tf**              | 1,099 bytes | VPC та підмережі (public/private subnets)          |
 | **internet_gateway.tf** | 952 bytes   | Internet Gateway та public маршрутизація           |
 | **nat_gateway.tf**      | 1,319 bytes | NAT Gateway та private маршрутизація               |
 | **security_groups.tf**  | 1,772 bytes | Security Groups для public/private EC2             |
 | **ec2.tf**              | 2,253 bytes | EC2 інстанси та SSH key pair                       |
+| **outputs.tf**          | 1,890 bytes | Outputs всіх створених ресурсів                    |
 
 ### 🔍 **Результати рефакторингу**:
 
@@ -502,13 +504,18 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 ```
 📁 Terraform Configuration (модульна архітектура)
 ├── 🔧 main.tf              # Terraform core, providers, data sources
+├── ⚙️ variables.tf         # Project variables (без defaults)
 ├── 🌐 vpc.tf               # VPC, public/private subnets  
 ├── 🌍 internet_gateway.tf  # Internet Gateway, public routing
 ├── 🔄 nat_gateway.tf       # NAT Gateway, private routing
 ├── 🛡️ security_groups.tf   # Security Groups
 ├── 💻 ec2.tf               # EC2 instances, SSH key pair
-├── 📤 outputs.tf           # All outputs (unchanged)
-└── ⚙️ variables.tf         # All variables (unchanged)
+├── 📤 outputs.tf           # All project outputs
+├── 🌍 environments/        # Environment configurations
+│   └── lab.tfvars         # Lab environment variables
+└── 📝 templates/          # User data scripts
+    ├── public-ec2-userdata.sh
+    └── private-ec2-userdata.sh
 ```
 **Результат**: 🚀 **Професійна модульна Terraform архітектура готова для production!**
 
@@ -593,18 +600,9 @@ aws configure list-profiles
 ├── nat_gateway.tf              # ✅ NAT Gateway та private routing  
 ├── security_groups.tf          # ✅ Security Groups
 ├── ec2.tf                      # ✅ EC2 інстанси та SSH key pair
-├── variables.tf                # ✅ Змінні Terraform (регіон, CIDR)
+├── variables.tf                # ✅ Змінні Terraform (без default значень)
 ├── outputs.tf                  # ✅ Виводи Terraform (VPC ID, CIDR)
-├── create-vpc-step-by-step.md  # ✅ Покрокове створення VPC
-├── create-subnets-step-by-step.md # ✅ Покрокове створення підмереж
-├── create-internet-gateway-step-by-step.md # ✅ Покрокове створення IGW
-├── create-nat-gateway-step-by-step.md # ✅ Покрокове створення NAT
-├── create-security-groups-step-by-step.md # ✅ Покрокове створення SG
-├── create-ec2-instances-step-by-step.md # ✅ Покрокове створення EC2
-├── test-connectivity-step-by-step.md # 🔄 Покрокове тестування підключення
 ├── .terraform.lock.hcl        # ✅ Terraform dependency lock
-├── terraform.tfvars          # ✅ Значення змінних (SSH ключ)
-├── terraform.tfvars.example   # ✅ Приклад значень змінних
 ├── environments/              # 🌍 Environment configuration
 │   └── lab.tfvars            # Lab environment variables
 ├── templates/                # 📝 User data scripts
