@@ -56,20 +56,20 @@
    - **Bucket name**: `terraform-state-svitlana-vpc` (унікальна назва)
    - **Region**: `eu-central-1` (Frankfurt)
 
-   ![Створення S3 bucket - крок 1](Screens/3.1_create_bucket.png)
+   ![Створення S3 bucket - крок 1](../Screens/3.1_create_bucket.png)
 
 3. **Налаштуйте параметри безпеки**:
    - **Block all public access**: ✅ (обов'язково!)
    - **Bucket Versioning**: Enable (рекомендовано)
    - **Server-side encryption**: Enable (AES-256)
 
-   ![Створення S3 bucket - крок 2](Screens/3.2_create_bucket.png)
+   ![Створення S3 bucket - крок 2](../Screens/3.2_create_bucket.png)
 
 4. **Завершіть створення**:
    - Перевірте всі налаштування
    - Натисніть **"Create bucket"**
 
-   ![Створення S3 bucket - результат](Screens/3.3_create_bucket.png)
+   ![Створення S3 bucket - результат](../Screens/3.3_create_bucket.png)
 
 #### Варіант B: Створення через Terraform
 ```bash
@@ -159,9 +159,9 @@ aws dynamodb list-tables --region eu-central-1
 ---
 
 ## 📸 **Скріншоти процесу:**
-- [3.1 - Початок створення bucket](Screens/3.1_create_bucket.png)
-- [3.2 - Налаштування параметрів](Screens/3.2_create_bucket.png)  
-- [3.3 - Результат створення](Screens/3.3_create_bucket.png)
+- [3.1 - Початок створення bucket](../Screens/3.1_create_bucket.png)
+- [3.2 - Налаштування параметрів](../Screens/3.2_create_bucket.png)  
+- [3.3 - Результат створення](../Screens/3.3_create_bucket.png)
 
 ---
 

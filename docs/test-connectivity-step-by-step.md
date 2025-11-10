@@ -155,7 +155,7 @@ ping -c 4 google.com
 - **Деталі**: Підключення пройшло без помилок, Jump Host доступний
 - **IP адреса всередині**: 10.0.1.243 (правильна приватна IP)
 
-**Скриншот**: [Screens/12.1_result_ssh_public_es2.png]
+![SSH доступ до Jump Host](../Screens/12.1_result_ssh_public_es2.png)
 
 ### Test 2 Results ✅ - SSH до Backend через Jump Host
 - **Дата/Час**: 09.11.2025 16:50
@@ -165,7 +165,7 @@ ping -c 4 google.com
 - **Результат 2**: ✅ Пряме підключення з Jump Host успішне
 - **Деталі**: Jump Host архітектура працює правильно
 
-**Скриншот**: [Screens/12.2_result_ssh_private_es2_with_jump_host.png]
+![SSH доступ до приватного сервера через Jump Host](../Screens/12.2_result_ssh_private_es2_with_jump_host.png)
 
 ### Test 3 Results ✅ - Негативний тест Security Groups
 - **Дата/Час**: 09.11.2025 16:52  
@@ -174,7 +174,7 @@ ping -c 4 google.com
 - **Деталі**: Security Group блокує прямий доступ з інтернету до приватного сервера
 - **Підтвердження**: Мережева ізоляція працює як заплановано
 
-**Скриншот**: [Screens/12.3_result_ssh_private_es2_without_jump_host.png]
+![Заблокований прямий доступ до приватного сервера](../Screens/12.3_result_ssh_private_es2_without_jump_host.png)
 
 ### Test 4 Results ✅ - Інтернет доступ через NAT Gateway
 - **Дата/Час**: 09.11.2025 16:55
@@ -184,8 +184,8 @@ ping -c 4 google.com
 - **NAT Gateway IP**: 3.124.200.138 (підтверджено)
 - **Деталі**: Приватний сервер має вихідний інтернет доступ через NAT Gateway
 
-**Скриншот**: [Screens/12.4_result_ssh_private_es2_ping_after_jump_host.png]
-**Скриншот**: [Screens/12.5_result_ssh_private_es2_ping_after_jump_host.png]
+![Ping Google DNS з приватного сервера](../Screens/12.4_result_ssh_private_es2_ping_after_jump_host.png)
+![Ping Google.com з приватного сервера](../Screens/12.5_result_ssh_private_es2_ping_after_jump_host.png)
 
 ### Test 5 Results 🔄
 - **Security Groups Test**: [Очікує]
