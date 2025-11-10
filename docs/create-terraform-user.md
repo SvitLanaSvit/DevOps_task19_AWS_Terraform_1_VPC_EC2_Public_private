@@ -37,7 +37,7 @@
 1. **Review** налаштування
 2. **Create user**
 
-![Крок 1.4: Результат створення користувача](Screens/1.4_create_user_result.png)
+![Крок 1.4: Результат створення користувача](../Screens/1.4_create_user_result.png)
 
 ### Крок 2: Створення політики доступу
 
@@ -78,14 +78,14 @@
 }
 ```
 
-![Крок 2.1: Створення нової політики](Screens/4.1_create_policy.png)
+![Крок 2.1: Створення нової політики](../Screens/4.1_create_policy.png)
 
 #### 2.2 Налаштування політики
 1. Назвіть політику: `S3AccessOnlyToSvitlanaKizilpinarBucket`
 2. Додайте опис: `Доступ тільки до S3 bucket для Terraform backend`
 3. **Next**
 
-![Крок 2.2: JSON політика доступу](Screens/4.2_create_policy.png)
+![Крок 2.2: JSON політика доступу](../Screens/4.2_create_policy.png)
 
 ### Крок 3: Прикріплення політики до користувача
 
@@ -93,17 +93,17 @@
 1. **IAM** → **Users** → `sk-terraform-user`
 2. **Permissions** → **Add permissions**
 
-![Крок 3.1: Додавання прав користувачу](Screens/4.3_add_policy_user.png)
+![Крок 3.1: Додавання прав користувачу](../Screens/4.3_add_policy_user.png)
 
 #### 3.2 Вибір політики
 1. **Attach policies directly**
 2. Знайти створену політику
 3. **Next**
 
-![Крок 3.2: Вибір політики для користувача](Screens/4.4_add_policy_user.png)
+![Крок 3.2: Вибір політики для користувача](../Screens/4.4_add_policy_user.png)
 
 #### 3.3 Результат
-![Крок 3.3: Політика додана до користувача](Screens/4.5_add_policy_user_result.png)
+![Крок 3.3: Політика додана до користувача](../Screens/4.5_add_policy_user_result.png)
 
 ### Крок 4: Надання прав доступу (альтернатива)
 
