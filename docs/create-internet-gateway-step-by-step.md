@@ -155,7 +155,7 @@ vpc_id = "vpc-0d0c0723032da8852"
 public_subnet_id = "subnet-0a01aeb1c1c5df18b"
 ```
 
-![Terraform Output](Screens/8.2_tf_output.png)
+![Terraform Output](../Screens/8.2_tf_output.png)
 
 ---
 
@@ -166,7 +166,7 @@ public_subnet_id = "subnet-0a01aeb1c1c5df18b"
 - **ID**: `igw-09b662e0c74072dbf`
 - **Статус**: Attached to `vpc-0d0c0723032da8852`
 
-![Internet Gateway в AWS Console](Screens/8.1_aws_igw.png)
+![Internet Gateway в AWS Console](../Screens/8.1_aws_igw.png)
 
 ### 2. Перевірка Route Table:
 - **Перехід**: VPC → Route Tables
@@ -175,13 +175,13 @@ public_subnet_id = "subnet-0a01aeb1c1c5df18b"
   - `10.0.0.0/16` → local
   - `0.0.0.0/0` → `igw-09b662e0c74072dbf`
 
-![Public Route Table в AWS Console](Screens/8.3_aws_route_table_public.png)
+![Public Route Table в AWS Console](../Screens/8.3_aws_route_table_public.png)
 
 ### 3. Перевірка Subnet Associations:
 - **Route Table**: `rtb-06137a896494091e1`
 - **Associated Subnets**: `subnet-0a01aeb1c1c5df18b` (Public)
 
-![Subnet Associations в AWS Console](Screens/8.4_aws_subnet_associations_route_table_public.png)
+![Subnet Associations в AWS Console](../Screens/8.4_aws_subnet_associations_route_table_public.png)
 
 ---
 

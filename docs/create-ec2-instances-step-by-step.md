@@ -209,9 +209,9 @@ chmod 600 ~/.ssh/id_rsa
 - **Private EC2:** `i-0e0363eca90971f06` (10.0.2.114)
 - **Ubuntu AMI:** `ami-0a854fe96e0b45e4e`
 
-![Private EC2 Instance](Screens/11.1_aws_es2_private.png)
+![Private EC2 Instance](../Screens/11.1_aws_es2_private.png)
 
-![Public EC2 Instance](Screens/11.2_aws_es2_public.png)
+![Public EC2 Instance](../Screens/11.2_aws_es2_public.png)
 
 ### 🔌 SSH команди:
 ```bash
@@ -238,7 +238,7 @@ ssh -i ~/.ssh/id_rsa -o ProxyCommand="ssh -i ~/.ssh/id_rsa -W %h:%p ubuntu@18.19
 ```bash
 terraform output
 ```
-![Terraform Output](Screens/11.3_tf_output.png)
+![Terraform Output](../Screens/11.3_tf_output.png)
 
 ### AWS Console
 1. **EC2 → Instances** - перевірити статус `running`

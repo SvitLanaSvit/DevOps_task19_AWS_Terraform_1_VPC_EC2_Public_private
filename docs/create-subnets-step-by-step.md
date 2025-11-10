@@ -160,7 +160,7 @@ private_subnet_cidr = "10.0.2.0/24"
 
 **📸 СКРІНШОТ 7.1**: Загальний список підмереж
 
-![Список підмереж в AWS Console](Screens/7.1_aws_subnets.png)
+![Список підмереж в AWS Console](../Screens/7.1_aws_subnets.png)
 
 **Що ви повинні бачити:**
 - ✅ `terraform-vpc-exercise-public-subnet` 
@@ -174,7 +174,7 @@ private_subnet_cidr = "10.0.2.0/24"
 
 **📸 СКRÍНШОТ 7.2**: Деталі публічної підмережі
 
-![Деталі публічної підмережі](Screens/7.3_aws_public_subnets.png)
+![Деталі публічної підмережі](../Screens/7.3_aws_public_subnets.png)
 
 **Критичні параметри:**
 - ✅ **Auto-assign public IPv4 address**: `Yes` 
@@ -188,7 +188,7 @@ private_subnet_cidr = "10.0.2.0/24"
 
 **📸 СКРІНШОТ 7.3**: Деталі приватної підмережі
 
-![Деталі приватної підмережі](Screens/7.2_aws_private_subnets.png)
+![Деталі приватної підмережі](../Screens/7.2_aws_private_subnets.png)
 
 **Критичні параметри:**
 - ✅ **Auto-assign public IPv4 address**: `No`
@@ -204,7 +204,7 @@ private_subnet_cidr = "10.0.2.0/24"
 aws ec2 describe-subnets --subnet-ids subnet-0a01aeb1c1c5df18b subnet-058f889377a78fa60 --query "Subnets[*].[SubnetId,CidrBlock,MapPublicIpOnLaunch,AvailabilityZone]" --output table
 ```
 
-![Порівняння публічної та приватної підмереж](Screens/7.4_aws_subnets_check.png)
+![Порівняння публічної та приватної підмереж](../Screens/7.4_aws_subnets_check.png)
 
 ## 🎯 Що було створено
 

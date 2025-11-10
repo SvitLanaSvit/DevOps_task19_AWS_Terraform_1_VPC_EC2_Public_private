@@ -239,7 +239,7 @@ public_security_group_id = "sg-097e16fe4c8bcc4bf"
 private_security_group_id = "sg-0c9acb2f6a65aedf9"
 ```
 
-![Terraform Output Security Groups](Screens/10.1_tf_output.png)
+![Terraform Output Security Groups](../Screens/10.1_tf_output.png)
 
 ---
 
@@ -249,7 +249,7 @@ private_security_group_id = "sg-0c9acb2f6a65aedf9"
 - **Перехід**: EC2 → Security Groups
 - **Фільтр**: VPC = `vpc-0d0c0723032da8852`
 
-![Security Groups в AWS Console](Screens/10.2_aws_sg.png)
+![Security Groups в AWS Console](../Screens/10.2_aws_sg.png)
 
 ### 2. Перевірка Public Security Group:
 - **ID**: `sg-097e16fe4c8bcc4bf`
@@ -257,9 +257,9 @@ private_security_group_id = "sg-0c9acb2f6a65aedf9"
 - **Inbound rules**: SSH (22) from 0.0.0.0/0
 - **Outbound rules**: All traffic to 0.0.0.0/0
 
-![Public Security Group Overview](Screens/10.3_aws_sg_public.png)
-![Public Security Group Inbound Rules](Screens/10.4_aws_sg_public.png)
-![Public Security Group Outbound Rules](Screens/10.5_aws_sg_public.png)
+![Public Security Group Overview](../Screens/10.3_aws_sg_public.png)
+![Public Security Group Inbound Rules](../Screens/10.4_aws_sg_public.png)
+![Public Security Group Outbound Rules](../Screens/10.5_aws_sg_public.png)
 
 ### 3. Перевірка Private Security Group:
 - **ID**: `sg-0c9acb2f6a65aedf9`
@@ -267,9 +267,9 @@ private_security_group_id = "sg-0c9acb2f6a65aedf9"
 - **Inbound rules**: SSH (22) from 10.0.1.0/24
 - **Outbound rules**: All traffic to 0.0.0.0/0
 
-![Private Security Group Overview](Screens/10.6_aws_sg_private.png)
-![Private Security Group Inbound Rules](Screens/10.7_aws_sg_private.png)
-![Private Security Group Outbound Rules](Screens/10.8_aws_sg_private.png)
+![Private Security Group Overview](../Screens/10.6_aws_sg_private.png)
+![Private Security Group Inbound Rules](../Screens/10.7_aws_sg_private.png)
+![Private Security Group Outbound Rules](../Screens/10.8_aws_sg_private.png)
 
 ---
 

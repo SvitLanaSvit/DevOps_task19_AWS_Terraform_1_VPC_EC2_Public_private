@@ -18,20 +18,20 @@
 1. **AWS Console** → Пошук **"IAM"** → IAM сервіс
 2. **Users** → **Create user**
 
-![Крок 1.1: Створення нового користувача](Screens/1.1_create_user.png)
+![Крок 1.1: Створення нового користувача](../Screens/1.1_create_user.png)
 
 #### 1.2 Налаштування користувача
 1. **User name**: `sk-terraform-user`
 2. **Provide user access to the AWS Management Console**: можете не ставити галочку (нам потрібен тільки програмний доступ)
 3. **Next**
 
-![Крок 1.2: Налаштування імені користувача](Screens/1.2_create_user.png)
+![Крок 1.2: Налаштування імені користувача](../Screens/1.2_create_user.png)
 
 #### 1.3 Налаштування прав доступу
 1. **Set permissions options**: Оберіть **"Attach policies directly"**
 2. **Next**
 
-![Крок 1.3: Вибір способу надання прав](Screens/1.3_create_user.png)
+![Крок 1.3: Вибір способу надання прав](../Screens/1.3_create_user.png)
 
 #### 1.4 Створення користувача
 1. **Review** налаштування
